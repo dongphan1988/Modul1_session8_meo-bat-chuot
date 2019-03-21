@@ -55,12 +55,15 @@
 
 
         this.eatMouse = function (myMouse) {
-            if (!myMouse[0].statusMouse) {
+            if(!this.setEating(true)){
+                alert("đang ăn");
+            }
+            else if (!myMouse[0].statusMouse ) {
                 alert("chuot chet chon lai");
                 myMouse.shift();
             } else if (this.speedCat > myMouse[0].speedMouse) {
                 this.weightCat = this.weightCat + myMouse[0].GetWeightMouse();
-                this.setEating(true);
+                this.eating = true;
                 myMouse[0].setStatusMouse(false);
                 myMouse.shift();
             } else {
@@ -97,7 +100,7 @@
         };
     }
 
-    let tomm = new Cat("tom", 35, 6, true);
+    let tomm = new Cat("tom", 35, 6, false);
     let mouse1 = new Mouse("chuot1", 7, 4, true);
     let mouse2 = new Mouse("chuot2", 4, 5, false);
     let mouse3 = new Mouse("chuot3", 5, 7, false);
